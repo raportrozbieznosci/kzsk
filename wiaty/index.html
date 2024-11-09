@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozstawienie Wiat i Samochodów Kurierskich</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <center><a href="file:///V:/Katowice/Wspolny/KSK/DAWID/WYRY/index.html"><img src="logo.png" style="width:100px;height:80px;"></a></center>
+    
+    <!-- Changelog -->
+    <div class="changelog-container">
+        <h1>Changelog</h1>
+        <form id="changelogForm">
+            <textarea id="changeInput" placeholder="Wprowadź zmianę..." required></textarea>
+            <button type="submit">Dodaj</button>
+        </form>
+        <div id="changelog">
+            <h2>Ostatnie zmiany</h2>
+            <ul id="recentChanges"></ul>
+            <button id="showHistory" class="history-button">Pokaż historię</button>
+        </div>
+    </div>
+
+    <h1>Rozstawienie Wiat i Samochodów Kurierskich</h1>
+    
+    <!-- Toggle view button and refresh button -->
+    <div class="control-container">
+        <div class="toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="toggle-view" onchange="toggleView()">
+                <span class="slider round"></span>
+            </label>
+            <span id="toggle-label">Nazwisko</span>
+        </div>
+        <button class="refresh-button" onclick="refreshPage()">Odśwież</button>
+    </div>
+
+    <div id="wiaty-container">
+        <!-- Wiaty zostaną załadowane tutaj dynamicznie przez JavaScript -->
+    </div>
+    <form id="kurier-form">
+        <h3>Dodaj Kuriera</h3>
+        <label for="imie">Imię:</label>
+        <input type="text" id="imie" name="imie" required>
+        <label for="nazwisko">Nazwisko:</label>
+        <input type="text" id="nazwisko" name="nazwisko" required>
+        <label for="numer-kuriera">Numer Kuriera:</label>
+        <input type="text" id="numer-kuriera" name="numer-kuriera" value="KAT" required>
+        <label for="numer-rejestracyjny">Numer Rejestracyjny:</label>
+        <input type="text" id="numer-rejestracyjny" name="numer-rejestracyjny" required>
+        <label for="wiata">Wiata:</label>
+        <select id="wiata" name="wiata">
+            <!-- Opcje zostaną załadowane dynamicznie przez JavaScript -->
+        </select>
+        <label for="miejsce">Miejsce Parkingowe:</label>
+        <select id="miejsce" name="miejsce">
+            <!-- Opcje od 1 do 20 zostaną załadowane dynamicznie przez JavaScript -->
+        </select>
+        <button type="submit">Dodaj Kuriera</button>
+    </form>
+    <div id="kurier-info" class="hidden">
+        <div class="kurier-details">
+            <h3>Informacje o Kurierze</h3>
+            <p id="kurier-full-info"></p>
+            <button onclick="closeInfo()">Zamknij</button>
+            <button onclick="editKurier()">Edytuj</button>
+            <button onclick="deleteKurier()">Usuń</button>
+        </div>
+    </div>
+    <div class="file-actions">
+        <button class="save" onclick="saveToFile()">ZAPISZ JSON</button>
+        <button class="load" onclick="loadFile()">WCZYTAJ JSON</button>
+        <button class="upload" onclick="uploadExcel()">ZAŁADUJ EXCEL</button>
+        <input type="file" id="file-input" accept=".json" style="display: none;" onchange="loadFromFile(event)">
+        <input type="file" id="excel-input" accept=".xlsx" style="display: none;" onchange="loadFromExcel(event)">
+    </div>
+    <div id="bulk-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeBulkModal()">&times;</span>
+            <h3>Masowe Dodawanie Kurierów</h3>
+            <div id="bulk-table-container">
+                <!-- Tabela miejsc parkingowych zostanie załadowana tutaj dynamicznie -->
+            </div>
+            <button onclick="bulkSaveKurierzy()">Zapisz Kurierów</button>
+        </div>
+    </div>
+    <div id="kurierzy-tabela" class="kurierzy-tabela">
+        <!-- Tabela kurierów z pliku Excel zostanie załadowana tutaj -->
+    </div>
+
+    <div id="historyModal" class="changelog-modal">
+        <div class="changelog-modal-content">
+            <span class="changelog-close">&times;</span>
+            <h2>Historia zmian</h2>
+            <ul id="fullHistory"></ul>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

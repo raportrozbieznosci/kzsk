@@ -1,0 +1,120 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #1e1e1e;
+}
+
+.logo {
+    height: 50px;
+}
+
+#logoutButton {
+    background-color: #e53935;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#logoutButton:hover {
+    background-color: #b71c1c;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+input, button, textarea {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+input, textarea {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    height: 60px; /* Zmniejszamy wysokość pola */
+}
+
+button {
+    background-color: #6200ea;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px auto; /* Wyśrodkowanie listy */
+    max-height: 200px; /* Ustawiamy maksymalną wysokość */
+    overflow-y: auto; /* Dodajemy przewijanie w pionie */
+    width: 80%; /* Zmniejszamy szerokość */
+}
+
+li {
+    background-color: #333333;
+    margin: 5px 0; /* Zmniejszamy margines */
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn, .edit-btn {
+    background-color: #e53935;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px; /* Dodajemy margines między przyciskami */
+}
+
+.edit-btn {
+    background-color: #ffb300;
+}
+
+.delete-btn:hover {
+    background-color: #b71c1c;
+}
+
+.edit-btn:hover {
+    background-color: #ffa000;
+}
+
+#downloadJson {
+    background-color: #4CAF50; /* zielony */
+    color: white;
+}
+
+#uploadJson {
+    background-color: #f44336; /* czerwony */
+   

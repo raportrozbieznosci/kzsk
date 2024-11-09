@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Pracowników</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+     <a href="file:///V:/Katowice/Wspolny/KSK/DAWID/WYRY/index.html"><img src="logo.png"style="width:120px;height:80px;"></a>
+        <button id="logoutButton">Wyloguj</button>
+    </div>
+    <div class="container">
+        <h1>Raport rozbieżności</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Nazwa użytkownika" required>
+            <input type="password" id="password" placeholder="Hasło" required>
+            <button type="submit">Zaloguj się</button>
+        </form>
+        <div id="app" style="display: none;">
+            <form id="employeeForm">
+                <input type="text" id="employeeName" list="nameSuggestions" placeholder="Imię i nazwisko" value="KAT" required>
+                <datalist id="nameSuggestions">
+                    <option value="KAT">
+                </datalist>
+                <input type="date" id="hireDate" required>
+                <button type="submit">Dodaj kuriera</button>
+            </form>
+            <input type="text" id="filterName" placeholder="Filtruj po KATnr">
+            <input type="date" id="filterDate" placeholder="Filtruj po dacie">
+            <ul id="employeeList"></ul>
+            <textarea id="employeeBulk" placeholder="Wklej listę kurierów (format: KATnr enter Katnr Enter itd.)" rows="3"></textarea>
+            <input type="date" id="bulkDate" placeholder="Data zatrudnienia">
+            <button id="bulkAddButton">Dodaj Pracowników</button>
+            <button id="exportButton">Eksportuj do CSV</button>
+            <input type="file" id="importFile" accept=".csv">
+            <button id="importButton">Importuj z CSV</button>
+            <button id="downloadJson">Ściągnij JSON</button>
+            <button id="uploadJson">Wczytaj JSON</button>
+            <input type="file" id="fileInput" style="display: none;">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

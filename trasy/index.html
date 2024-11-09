@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trasy Kurierskie</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="header text-center mb-4">
+            <img src="logo.png" width="100" height="100" class="logo">
+        </div>
+        <div class="header mb-3">
+            <h1 class="text-primary text-center title-border">Trasy Kurierskie</h1>
+        </div>
+        
+        <div class="search-box mb-4">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Wyszukaj...">
+            <div id="searchResults" class="list-group mt-2 search-results"></div>
+        </div>
+        
+        <div class="mb-4">
+            <center><h2 class="text-center title-border">Wczytaj Plik Excel</h2></center>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <input type="file" id="fileInput" class="form-control file-input mb-2">
+                <button id="loadButton" class="btn btn-primary mt-2 w-100">Wczytaj</button>
+            </div>
+        </div>
+
+        <div class="route-form mb-4 text-center">
+            <h2 class="text-center title-border">Przypisz Kuriera</h2>
+            <form id="courierForm" class="form-inline justify-content-center">
+                <div class="form-group mr-2">
+                    <label for="routeSelect" class="mr-2">Wybierz Trasę:</label>
+                    <select id="routeSelect" class="form-control"></select>
+                </div>
+                <div class="form-group mr-2">
+                    <label for="courierName" class="mr-2">Kurier:</label>
+                    <input type="text" id="courierName" class="form-control" value="KAT" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Przypisz Kuriera</button>
+            </form>
+        </div>
+
+        <div class="route-list text-center">
+            <h2 class="text-center title-border">Lista Tras</h2>
+            <div class="d-flex justify-content-between mb-2 route-actions">
+                <button id="loadJsonButton" class="btn btn-secondary">Wczytaj JSON</button>
+                <button id="saveJsonButton" class="btn btn-secondary">Zapisz JSON</button>
+                <button id="deleteAllButton" class="btn btn-danger">Usuń Wszystko</button>
+            </div>
+            <table class="table table-dark table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>APM</th>
+                        <th>MIASTO</th>
+                        <th>ADRES</th>
+                        <th>TRASA</th>
+                        <th class="wide-column">KURIER</th>
+                        <th>AKCJE</th>
+                    </tr>
+                </thead>
+                <tbody id="routeList">
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mb-4">
+            <button id="saveButton" class="btn btn-success">Zapisz Zmiany do Pliku Excel</button>
+            <p><span style="color:#2196f3;font-family:Tahoma, Geneva, sans-serif;font-size:10px;">@created by Dawid Zieliński</span></p>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyszukiwarka Kurierów</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/pl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="header text-center mb-4">
+            <center><a href="file:///V:/Katowice/Wspolny/KSK/DAWID/WYRY/index.html"><img src="logo.png" style="width:100px;height:80px;"></a></center>
+        </div>
+        <div class="header mb-1">
+            <h1 class="text-primary text-center title-border">Wyszukiwarka Kurierów</h1>
+        </div>
+        
+        <div class="search-box mb-4">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Wyszukaj...">
+            <div id="searchResults" class="list-group mt-2 search-results"></div>
+        </div>
+        
+        <CENTER><div class="mb-4">
+            <h2 class="text-center title-border">Wczytaj Plik Excel</h2>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <input type="file" id="fileInput" class="form-control file-input mb-2">
+                <button id="loadButton" class="btn btn-primary mt-2 w-100">Wczytaj</button>
+            </div>
+        </div></CENTER>
+
+        <div class="route-list text-center">
+            <h2 class="text-center title-border">Lista Kurierów</h2>
+            <div class="d-flex justify-content-between mb-2 route-actions">
+                <button id="deleteAllButton" class="btn btn-danger">Usuń Wszystko</button>
+                <button id="downloadQRButton" class="btn btn-success">Pobierz kody QR</button>
+                <button id="simulateButton" class="btn btn-warning">Symuluj Skanowanie QR</button>
+            </div>
+            <table class="table table-dark table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Numer Kuriera</th>
+                        <th>Kod QR</th>
+                        <th>Data Odczytu</th>
+                    </tr>
+                </thead>
+                <tbody id="routeList">
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mb-4">
+            <button id="saveButton" class="btn btn-success">Zapisz Zmiany do Pliku Excel</button>
+            <p><span style="color:#2196f3;font-family:Tahoma, Geneva, sans-serif;font-size:10px;">@created by Dawid Zieliński</span></p>
+        </div>
+
+        <!-- Modal for Calendar -->
+        <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="calendarModalLabel">Historia Odczytów</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Large QR Code -->
+        <div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="qrCodeModalLabel">Kod QR</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="largeQrCode" src="" alt="Large QR Code" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
